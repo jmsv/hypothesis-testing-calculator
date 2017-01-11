@@ -1,0 +1,26 @@
+Hypothesis Testing Calculator test output 05-01-2016 15:40
+
+Each test consists of: (e.g. 'Coin toss')
+A success is getting: (e.g. 'Heads')
+Number of tests: 19
+
+p is the probability that (e.g. 'a coin toss') from the population gives (e.g. 'heads').
+X is the number of (e.g. 'heads') in a sample size of 19
+
+H₀: p = 0.3
+H₁: p < 0.3
+
+Significance level = 0.02.
+
+Assume H₀ is true:
+X ~ B(19, 0.3)
+X is distributed binomially with n = 19, p = 0.3.
+
+Number of successes, r = 10
+
+P(X ≥ 10) > 0.02%
+
+Accept H0 (comment on the null)
+
+There is not enough evidence to suggest that the number of successful trials in the population is greater than expected (~6.00 (to 2dp)).
+
