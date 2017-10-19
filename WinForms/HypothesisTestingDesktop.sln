@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HypothesisTestingDesktop", "HypothesisTestingDesktop\HypothesisTestingDesktop.csproj", "{698ECB77-0F4A-42C9-A9BE-CA167C86915B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HypothesisTestingDesktopTests", "HypothesisTestingDesktopTests\HypothesisTestingDesktopTests.csproj", "{47827BD5-05EC-45BE-927A-721F375C6E8A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HypothesisTestingDesktop.UITests", "HypothesisTestingDesktop.UITests\HypothesisTestingDesktop.UITests.csproj", "{3015BA83-956B-4C0F-B610-DF57DAA8FF7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{98596B71-EADC-4840-8830-2AC35336B600}"
+	ProjectSection(SolutionItems) = preProject
+		..\.editorconfig = ..\.editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
