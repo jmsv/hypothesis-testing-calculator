@@ -6,112 +6,42 @@ using TestStack.White.UIItems.WindowItems;
 using System.IO;
 using System.Diagnostics;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using System.Collections.Generic;
 
 namespace HypothesisTestingDesktop.UITests
 {
-    [TestClass]
     public class UnitTest1
     {
-        bool SlowedTests = false;
-
-        [TestMethod]
-        public void TestMethod01()
-        {
-            ConductTestWith("20", "0.5", "14", "5", 2, SlowedTests);
-        }
-
-        [TestMethod]
-        public void TestMethod02()
-        {
-            ConductTestWith("20", "0.5", "15", "5", 2, SlowedTests);
-        }
-
-        [TestMethod]
-        public void TestMethod03()
-        {
-            ConductTestWith("10", "0.5", "2", "5", 1, SlowedTests);
-        }
-
-        [TestMethod]
-        public void TestMethod04()
-        {
-            ConductTestWith("10", "0.5", "2", "10", 1, SlowedTests);
-        }
-
-        [TestMethod]
-        public void TestMethod05()
-        {
-            ConductTestWith("14", "0.2", "17", "5", 3, SlowedTests);
-        }
-
-        [TestMethod]
-        public void TestMethod06()
-        {
-            ConductTestWith("20", "0.5", "10", "5", 0, SlowedTests);
-        }
-
-        [TestMethod]
-        public void TestMethod07()
-        {
-            ConductTestWith("16", "1.1", "4", "2", 2, SlowedTests);
-        }
-
-        [TestMethod]
-        public void TestMethod08()
-        {
-            ConductTestWith("20", "0.8", "15", "104", 2, SlowedTests);
-        }
-
-        [TestMethod]
-        public void TestMethod09()
-        {
-            ConductTestWith("18", "0", "2", "5", 1, SlowedTests);
-        }
-
-        [TestMethod]
-        public void TestMethod10()
-        {
-            ConductTestWith("18", "1", "12", "5", 1, SlowedTests);
-        }
-
-        [TestMethod]
-        public void TestMethod11()
-        {
-            ConductTestWith("10", "0.5", "6", "100", 1, SlowedTests);
-        }
-
-        [TestMethod]
-        public void TestMethod12()
-        {
-            ConductTestWith("12", "0.65", "12", "5", 1, SlowedTests);
-        }
-
-        [TestMethod]
-        public void TestMethod13()
-        {
-            ConductTestWith("18", "0.65", "5", "5", 3, SlowedTests);
-        }
-
-        [TestMethod]
-        public void TestMethod14()
-        {
-            ConductTestWith("85", "0.4", "10", "5", 2, SlowedTests);
-        }
-
-        [TestMethod]
-        public void TestMethod15()
-        {
-            ConductTestWith("20", "0.32", "0", "5", 1, SlowedTests);
-        }
-
+        static bool SlowedTests = false;
 
         private static void SleepT(int time)
         {
             Thread.Sleep(time);
         }
 
-        private static void ConductTestWith(string n, string p, string r, string a, int testType, bool slowDown)
+        public static IEnumerable<object[]> GetTestData()
+        {
+            yield return new object[] { 20, 0.5m, 14, 5, 2, SlowedTests };
+            yield return new object[] { 20, 0.5m, 15, 5, 2, SlowedTests };
+            yield return new object[] { 10, 0.5m, 2, 5, 1, SlowedTests };
+            yield return new object[] { 10, 0.5m, 2, 10, 1, SlowedTests };
+            yield return new object[] { 14, 0.2m, 17, 5, 3, SlowedTests };
+            yield return new object[] { 20, 0.5m, 10, 5, 0, SlowedTests };
+            yield return new object[] { 16, 1.1m, 4, 2, 2, SlowedTests };
+            yield return new object[] { 20, 0.8m, 15, 104, 2, SlowedTests };
+            yield return new object[] { 18, 0.0m, 2, 5, 1, SlowedTests };
+            yield return new object[] { 18, 1.0m, 12, 5, 1, SlowedTests };
+            yield return new object[] { 10, 0.5m, 6, 100, 1, SlowedTests };
+            yield return new object[] { 12, 0.65m, 12, 5, 1, SlowedTests };
+            yield return new object[] { 18, 0.65m, 5, 5, 3, SlowedTests };
+            yield return new object[] { 85, 0.4m, 10, 5, 2, SlowedTests };
+            yield return new object[] { 20, 0.32m, 0, 5, 1, SlowedTests };
+        }
+
+        [Theory]
+        [MemberData(nameof(GetTestData))]
+        public void ConductTestWith(int n, decimal p, int r, int a, int testType, bool slowDown)
         {
             // Arrange
 
@@ -145,43 +75,42 @@ namespace HypothesisTestingDesktop.UITests
                 var buttonCalc = window.Get(SearchCriteria.ByAutomationId("buttonCalc"));
                 var buttonReset = window.Get(SearchCriteria.ByAutomationId("buttonReset"));
 
-
-                Assert.IsNotNull(inputN);
+                Assert.NotNull(inputN);
                 inputN.Enter(n.ToString());
                 if (slowDown) SleepT(256);
 
-                Assert.IsNotNull(inputP);
+                Assert.NotNull(inputP);
                 inputP.Enter(p.ToString());
                 if (slowDown) SleepT(256);
 
-                Assert.IsNotNull(inputR);
+                Assert.NotNull(inputR);
                 inputR.Enter(r.ToString());
                 if (slowDown) SleepT(256);
 
-                Assert.IsNotNull(inputA);
+                Assert.NotNull(inputA);
                 inputA.Enter(a.ToString());
                 if (slowDown) SleepT(256);
 
                 if (testType == 1)
                 {
-                    Assert.IsNotNull(radioButton1);
+                    Assert.NotNull(radioButton1);
                     radioButton1.Click();
                 }
                 if (testType == 2)
                 {
-                    Assert.IsNotNull(radioButton2);
+                    Assert.NotNull(radioButton2);
                     radioButton2.Click();
                 }
                 if (testType == 3)
                 {
-                    Assert.IsNotNull(radioButton3);
+                    Assert.NotNull(radioButton3);
                     radioButton3.Click();
                 }
 
                 if (slowDown) SleepT(512);
-                Assert.IsNotNull(buttonCalc);
+                Assert.NotNull(buttonCalc);
                 buttonCalc.Click();
-                if (slowDown) SleepT(1024);                
+                if (slowDown) SleepT(1024);
             }
             finally
             {

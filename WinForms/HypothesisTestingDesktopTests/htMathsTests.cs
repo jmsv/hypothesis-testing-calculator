@@ -1,60 +1,50 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using HypothesisTestingDesktop;
+﻿using HypothesisTestingDesktop;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Xunit;
 
 namespace HypothesisTestingDesktop.Tests
 {
-    [TestClass()]
     public class htMathsTests
     {
         // Papers used for AltAccepted tests were found at http://www.mei.org.uk/alevelpapers#S1
 
-        [TestMethod()]
-        public void AltAcceptedTest1() // MEI S1 Jan 2013 7)ii)
+        public static IEnumerable<object[]> AltAcceptedTestData()
         {
-            //Arrange
-            bool expected = false;
-            //Act
-            bool actual = htMaths.AltAccepted(3, 20, 0.35m, 10, 5);
-            //Assert
-            Assert.AreEqual(expected, actual);
+            yield return new object[] { 3, 20, 0.35m, 10, 5, false }; // MEI S1 Jan 2013 7)ii)
+            yield return new object[] { 3, 200, 0.35m, 90, 5, true }; // MEI S1 Jan 2013 7)iii)
+            yield return new object[] { 1, 20, 0.85m, 13, 1, false }; // MEI S1 June 2014 7)iii)
+            yield return new object[] { 2, 20, 0.5m, 13, 5, false }; // MEI S1 June 2013 5)iii)
         }
 
-        [TestMethod()]
-        public void AltAcceptedTest2() // MEI S1 Jan 2013 7)iii)
+        [Theory]
+        [MemberData(nameof(AltAcceptedTestData))]
+        public void AltAcceptedTest(int testType, Int64 n, decimal p, Int64 r, decimal a, bool expected)
         {
-            //Arrange
-            bool expected = true;
-            //Act
-            bool actual = htMaths.AltAccepted(3, 200, 0.35m, 90, 5);
-            //Assert
-            Assert.AreEqual(expected, actual);
+            bool actual = htMaths.AltAccepted(testType, n, p, r, a);
+
+            Assert.Equal(expected, actual);
         }
 
-        [TestMethod()]
-        public void AltAcceptedTest3() // MEI S1 June 2014 7)iii)
+        public static IEnumerable<object[]> GetFactorialTestData()
         {
-            //Arrange
-            bool expected = false;
-            //Act
-            bool actual = htMaths.AltAccepted(1, 20, 0.85m, 13, 1);
-            //Assert
-            Assert.AreEqual(expected, actual);
+            //yield return new object[] { -1, 1 };
+            yield return new object[] { 0, 1 };
+            yield return new object[] { 1, 1 };
+            yield return new object[] { 2, 2 };
+            yield return new object[] { 3, 6 };
+            yield return new object[] { 4, 24 };
+            yield return new object[] { 5, 120 };
+            yield return new object[] { 10, 3628800 };
+            yield return new object[] { 11, 39916800 };
         }
 
-        [TestMethod()]
-        public void AltAcceptedTest4() // MEI S1 June 2013 5)iii)
+        [Theory]
+        [MemberData(nameof(GetFactorialTestData))]
+        public void GetFactorialTest(Int64 number, Int64 expected)
         {
-            //Arrange
-            bool expected = false;
-            //Act
-            bool actual = htMaths.AltAccepted(2, 20, 0.5m, 13, 5);
-            //Assert
-            Assert.AreEqual(expected, actual);
+            var actual = htMaths.GetFactorial(number);
+            Assert.Equal(expected, actual);
         }
     }
 }
