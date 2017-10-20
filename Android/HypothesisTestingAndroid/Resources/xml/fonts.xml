@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>  
+<familyset>
+
+    <family>
+        <nameset>
+            <name>lekton</name>
+        </nameset>
+        <fileset>
+            <file>Lekton_Regular.ttf</file>
+        </fileset>
+    </family>
+
+</familyset>

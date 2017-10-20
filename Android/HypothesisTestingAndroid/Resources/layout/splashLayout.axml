@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ff2b89ac"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:visibility="visible"
+    android:gravity="center">
+    <ImageView
+        android:src="@drawable/splashscreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView1"
+        android:scaleType="fitXY"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:visibility="visible"
+        android:background="#2b89ac" />
+</LinearLayout>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+  <style name="Theme.Splash" parent="android:Theme">
+    <item name="android:windowBackground">@drawable/splashScreen</item>
+    <item name="android:gravity">clip_vertical</item>
+    <item name="android:windowNoTitle">true</item>
+  </style>
+  <style name="Theme.Titanium" parent="android:Theme">
+    <item name="android:windowBackground">@drawable/splashScreen</item>
+    <item name="android:windowNoTitle">true</item>
+</style>
+</resources>
+

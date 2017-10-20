@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:background="#ff3d3d3d"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:scrollbars="vertical"
+    android:verticalScrollbarPosition="defaultPosition">
+    <ScrollView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView1"
+        android:scrollbars="none">
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout1">
+            <ImageView
+                android:src="@drawable/headtitletext"
+                android:id="@+id/titleView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:src="#ff2b89ac"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:id="@+id/blueDiv" />
+            <TextView
+                android:text=" n = "
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/promptN" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editN"
+                android:hint="number of trials"
+                android:numeric="integer"
+                android:maxLength="10"
+                android:inputType="number" />
+            <TextView
+                android:text=" p = "
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/promptP" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editP"
+                android:hint="null probability"
+                android:numeric="decimal"
+                android:maxLength="20"
+                android:inputType="numberDecimal" />
+            <TextView
+                android:text=" r = "
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/promptR" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editR"
+                android:hint="successful trials"
+                android:numeric="integer"
+                android:maxLength="10"
+                android:inputType="number" />
+            <TextView
+                android:text=" α ="
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/promptA" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editA"
+                android:hint="significance level (%)"
+                android:numeric="decimal"
+                android:maxLength="20"
+                android:inputType="numberDecimal" />
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioTailed"
+                android:paddingLeft="20dp"
+                android:layout_marginTop="16dp">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="One-Tailed: P:H0 &gt; P:H1"
+                    android:id="@+id/radioOneTailed1" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="One-Tailed: P:H0 &lt; P:H1"
+                    android:id="@+id/radioOneTailed2" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Two-Tailed: P:H0!=P:H1"
+                    android:id="@+id/radioTwoTailed" />
+            </RadioGroup>
+            <ImageView
+                android:src="#ffffffff"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:id="@+id/imageView1"
+                android:layout_marginTop="16dp" />
+            <Button
+                android:text="Calculate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/calcButt"
+                android:layout_gravity="bottom"
+                android:background="#ff2b89ac"
+                android:layout_marginTop="10dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:id="@+id/spaceAfterCalc" />
+            <TextView
+                android:text="P"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/p_XetX"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="30dp" />
+            <TextView
+                android:text="P"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/p_XltORetX"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="30dp" />
+            <Button
+                android:text="Reset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/resetButt"
+                android:background="#777777"
+                android:textColor="#ffffff"
+                android:layout_marginTop="10dp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:id="@+id/space2" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
