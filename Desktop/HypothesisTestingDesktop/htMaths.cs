@@ -2,6 +2,9 @@
 
 namespace HypothesisTestingDesktop
 {
+    /// <summary>
+    /// Implementation for the maths routines.
+    /// </summary>
     public class htMaths
     {
         /// <summary>
@@ -50,11 +53,10 @@ namespace HypothesisTestingDesktop
         /// <summary>
         /// Takes N and R and uses GetFactorial to calculate nCr
         /// </summary>
-        /// <param name="nValueIn">n value (nCr)</param>
-        /// <param name="rValueIn">r value (nCr)</param>
+        /// <param name="n">n value (nCr)</param>
+        /// <param name="r">r value (nCr)</param>
         /// <returns></returns>
-        public static Int64 Get_nCr
-            (Int64 n, Int64 r)
+        public static Int64 Get_nCr(Int64 n, Int64 r)
         {
             Int64 nCrValue = 0;
 
@@ -74,7 +76,7 @@ namespace HypothesisTestingDesktop
                     nCrValue = nFactorial
                         / (rFactorial * nMinusRFactorial);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     return -1;
                 }
@@ -175,7 +177,7 @@ namespace HypothesisTestingDesktop
 
         /// <summary>
         /// Takes the binomial formula and calculates the cumulative value.
-        /// From r=r down to r<x.
+        /// From r equals r down to r less than x.
         /// </summary>
         /// <param name="n">'n' value</param>
         /// <param name="p">'p' value</param>

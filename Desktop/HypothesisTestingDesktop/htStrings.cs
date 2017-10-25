@@ -2,8 +2,21 @@
 
 namespace HypothesisTestingDesktop
 {
+    /// <summary>
+    /// Implementayion for the string building class.
+    /// </summary>
     public class htStrings
     {
+        /// <summary>
+        /// Get the conclusion text.
+        /// </summary>
+        /// <param name="specific">if set to <c>true</c> [specific].</param>
+        /// <param name="successTrial">The success trial.</param>
+        /// <param name="testType">Type of the test.</param>
+        /// <param name="AltAccepted">if set to <c>true</c> [alt accepted].</param>
+        /// <param name="n">The n.</param>
+        /// <param name="p">The p.</param>
+        /// <returns>The conclusion string.</returns>
         public static string TestConclusion(bool specific, string successTrial, int testType, bool AltAccepted, Int64 n, decimal p)
         {
             string comparative = "";
@@ -36,6 +49,15 @@ namespace HypothesisTestingDesktop
                     + ").";
         }
 
+        /// <summary>
+        /// Gets the Critical comparison string.
+        /// </summary>
+        /// <param name="TestType">Type of the test.</param>
+        /// <param name="n">The n.</param>
+        /// <param name="p">The p.</param>
+        /// <param name="r">The r.</param>
+        /// <param name="a">a.</param>
+        /// <returns></returns>
         public static string CriticalComparison(int TestType, Int64 n, decimal p, Int64 r, decimal a)
         {
             // Test types:
@@ -79,6 +101,17 @@ namespace HypothesisTestingDesktop
             return "";
         }
 
+        /// <summary>
+        /// Gets the tests text.
+        /// </summary>
+        /// <param name="n">The n.</param>
+        /// <param name="p">The p.</param>
+        /// <param name="r">The r.</param>
+        /// <param name="a">a.</param>
+        /// <param name="TestType">Type of the test.</param>
+        /// <param name="AltAccepted">if set to <c>true</c> [alt accepted].</param>
+        /// <param name="TestConclusion">The test conclusion.</param>
+        /// <returns>The test text.</returns>
         public static string TestText(Int64 n, decimal p, Int64 r, decimal a, int TestType, bool AltAccepted, string TestConclusion)
         {
             // H₀ H₁ ≤ ≥ ≠
@@ -127,6 +160,10 @@ namespace HypothesisTestingDesktop
         }
 
 
+        /// <summary>
+        /// Gets the current date and time.
+        /// </summary>
+        /// <returns>The current date/time.</returns>
         public static string GetTimeDate()
         {
             // Return time and date as a string
