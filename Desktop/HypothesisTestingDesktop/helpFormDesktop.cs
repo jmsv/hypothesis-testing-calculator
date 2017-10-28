@@ -3,8 +3,15 @@ using System.Windows.Forms;
 
 namespace HypothesisTestingDesktop
 {
+    /// <summary>
+    /// Implementation for the help form.
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class helpFormDesktop : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="helpFormDesktop"/> class.
+        /// </summary>
         public helpFormDesktop()
         {
             InitializeComponent();

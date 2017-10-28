@@ -5,14 +5,28 @@ using System.Windows.Forms;
 
 namespace HypothesisTestingDesktop
 {
+    /// <summary>
+    /// Implementation for the text form.
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class TextView : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TextView"/> class.
+        /// </summary>
         public TextView()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// The file path
+        /// </summary>
         public string FilePath; // Value given before form loads
+
+        /// <summary>
+        /// The file path new
+        /// </summary>
         public string FilePathNew; // Value assigned at load
 
         private bool FileOpen = false;
@@ -35,7 +49,7 @@ namespace HypothesisTestingDesktop
                         // Read text file to memory
                         FileOpen = true; // File now open
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     { // Show error
                         MessageBox.Show("Can't open text file",
                             "Hypothesis Testing Calculator Error",
@@ -62,7 +76,7 @@ namespace HypothesisTestingDesktop
             {
                 File.WriteAllText(FilePathNew, editBox.Text);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Can't write text file. Try using 'Save As'.",
                     "Hypothesis Testing Calculator Error",
@@ -91,7 +105,7 @@ namespace HypothesisTestingDesktop
                 {
                     File.WriteAllText(saveFileDialog1.FileName, OutputString);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Can't write text file",
                         "Error",
@@ -140,7 +154,8 @@ namespace HypothesisTestingDesktop
             try
             {
                 editBox.Font = new Font(sent.Text, editBox.Font.Size);
-            } catch(Exception ex)
+            }
+            catch (Exception)
             {
                 MessageBox.Show("Font not available",
                     "Hypothesis Testing Calculator - Error",
@@ -215,7 +230,7 @@ namespace HypothesisTestingDesktop
             {
                 clipBefore = Clipboard.GetText();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Clipboard.SetText("");
             }
@@ -288,7 +303,7 @@ namespace HypothesisTestingDesktop
                         TextFileString = File.ReadAllText(FilePath);
                         FileOpen = true;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         MessageBox.Show("Can't open text file",
                             "Hypothesis Testing Calculator Error",

@@ -6,17 +6,23 @@ using System.Windows.Forms;
 
 namespace HypothesisTestingDesktop
 {
+    /// <summary>
+    /// Implementation for main form.
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class calcMain : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="calcMain"/> class.
+        /// </summary>
         public calcMain()
         {
             InitializeComponent();
         }
 
-        public int testType = 0;
-        public string H0 = "H₀";
-        public string H1 = "H₁";
-
+        private int testType = 0;
+        private string H0 = "H₀";
+        private string H1 = "H₁";
 
         Int64 nValue; //sample size
         decimal pValue; //null probabiity of a success
@@ -152,7 +158,7 @@ namespace HypothesisTestingDesktop
 #endif
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         } // End of reset code
@@ -372,7 +378,7 @@ namespace HypothesisTestingDesktop
             return result;
         }
 
-        public static int Truth(params bool[] booleans)
+        private static int Truth(params bool[] booleans)
         {
             return booleans.Count(b => b);
         }
@@ -495,7 +501,7 @@ namespace HypothesisTestingDesktop
                 {
                     File.WriteAllText(saveFileDialog1.FileName, OutputString);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Can't write text file",
                         "Error",
