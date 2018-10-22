@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using HypothesisTestingCommon;
 
 namespace HypothesisTestingDesktop
 {
@@ -24,10 +25,10 @@ namespace HypothesisTestingDesktop
         private string H0 = "H₀";
         private string H1 = "H₁";
 
-        Int64 nValue; //sample size
-        decimal pValue; //null probabiity of a success
-        Int64 rValue; //successful trials from test
-        decimal aValue; //significance level for test
+        long nValue; //sample size
+        double pValue; //null probabiity of a success
+        long rValue; //successful trials from test
+        double aValue; //significance level for test
 
 
         private void calcMain_Load(object sender, EventArgs e)
@@ -192,41 +193,39 @@ namespace HypothesisTestingDesktop
 
                 CalcSuccess = true;
 
-                nValue = Int64.Parse(n_s);
-                pValue = decimal.Parse(p_s);
-                rValue = Int64.Parse(r_s);
-                aValue = decimal.Parse(a_s);
+                nValue = long.Parse(n_s);
+                pValue = double.Parse(p_s);
+                rValue = long.Parse(r_s);
+                aValue = double.Parse(a_s);
                 SetDefaultOutput(rValue);
 
-                decimal P_XetR =
-                    htMaths.BinomialProb_XetR(nValue, pValue, rValue);
+                double P_XetR =
+                    Maths.BinomialProb_XetR(nValue, pValue, rValue);
                 string P_XetR_string = P_XetR.ToString("0.0000");
                 text_P_XetR.Text += P_XetR_string;
 
-                decimal P_XltR =
-                    htMaths.BinomialProb_XltR(nValue, pValue, rValue);
+                double P_XltR =
+                    Maths.BinomialProb_XltR(nValue, pValue, rValue);
                 string P_XltR_string = P_XltR.ToString("0.0000");
                 text_P_XltR.Text += P_XltR_string;
 
-                decimal P_XltetR =
-                    htMaths.BinomialProb_XltetR(nValue, pValue, rValue);
+                double P_XltetR =
+                    Maths.BinomialProb_XltetR(nValue, pValue, rValue);
                 string P_XltetR_string = P_XltetR.ToString("0.0000");
                 text_P_XltetR.Text += P_XltetR_string;
 
-                decimal P_XgtR =
-                    htMaths.BinomialProb_XgtR(nValue, pValue, rValue);
+                double P_XgtR =
+                    Maths.BinomialProb_XgtR(nValue, pValue, rValue);
                 string P_XgtR_string = P_XgtR.ToString("0.0000");
                 text_P_XgtR.Text += P_XgtR_string;
 
-                decimal P_XgtetR =
-                    htMaths.BinomialProb_XgtetR(nValue, pValue, rValue);
+                double P_XgtetR =
+                    Maths.BinomialProb_XgtetR(nValue, pValue, rValue);
                 string P_XgtetR_string = P_XgtetR.ToString("0.0000");
                 text_P_XgtetR.Text += P_XgtetR_string;
 
-
                 bool AltAcceptedBool =
-                    htMaths.AltAccepted(testType, nValue, pValue, rValue, aValue);
-
+                    Maths.IsAlternativeAccepted(testType, nValue, pValue, rValue, aValue);
 
                 string stringAccept = "";
                 string stringReject = "";
@@ -253,7 +252,7 @@ namespace HypothesisTestingDesktop
                     + ".";
 
                 string OutConclusionString =
-                    htStrings.TestConclusion(false, "",
+                    Strings.TestConclusion(false, "",
                     testType, AltAcceptedBool, nValue, pValue);
                 panelConclusion.Visible = true;
 
@@ -262,7 +261,7 @@ namespace HypothesisTestingDesktop
                 // ^ Copy conclusion to clipboard
 
                 string Comparison =
-                    htStrings.CriticalComparison(testType,
+                    Strings.CriticalComparison(testType,
                     nValue, pValue, rValue, aValue);
 
                 OutComparisonValues.Text = Comparison;
@@ -453,10 +452,10 @@ namespace HypothesisTestingDesktop
             {
                 NoTestSpec = false;
                 bool AcceptAlt =
-                    htMaths.AltAccepted(testType, nValue, pValue, rValue, aValue);
+                    Maths.IsAlternativeAccepted(testType, nValue, pValue, rValue, aValue);
 
 
-                SaveText(htStrings.TestText(nValue, pValue, rValue, aValue, testType, AcceptAlt, htStrings.TestConclusion(false, "", testType, AcceptAlt, nValue, pValue)));
+                SaveText(Strings.TestText(nValue, pValue, rValue, aValue, testType, AcceptAlt, Strings.TestConclusion(false, "", testType, AcceptAlt, nValue, pValue)));
                 // SaveText is my own method; listed below.
 
 
