@@ -77,9 +77,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HypothesisTestingDesktop\HypothesisTestingDesktop.csproj">
-      <Project>{698ECB77-0F4A-42C9-A9BE-CA167C86915B}</Project>
-      <Name>HypothesisTestingDesktop</Name>
+    <ProjectReference Include="..\..\Common\HypothesisTestingCommon\HypothesisTestingCommon.csproj">
+      <Project>{5102A78C-6D8F-4C5B-8FAA-73B936968F8F}</Project>
+      <Name>HypothesisTestingCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

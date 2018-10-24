@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace HypothesisTestingDesktop
+namespace HypothesisTestingCommon
 {
     /// <summary>
-    /// Implementayion for the string building class.
+    /// Implementation for the string building class.
     /// </summary>
-    public class htStrings
+    public class Strings
     {
         /// <summary>
         /// Get the conclusion text.
@@ -17,7 +17,7 @@ namespace HypothesisTestingDesktop
         /// <param name="n">The n.</param>
         /// <param name="p">The p.</param>
         /// <returns>The conclusion string.</returns>
-        public static string TestConclusion(bool specific, string successTrial, int testType, bool AltAccepted, Int64 n, decimal p)
+        public static string TestConclusion(bool specific, string successTrial, int testType, bool AltAccepted, long n, double p)
         {
             string comparative = "";
             // Relationship between null and alternative probabilities
@@ -26,7 +26,7 @@ namespace HypothesisTestingDesktop
             if (testType == 3) comparative = "different to";
             if (testType >= 4 | testType <= 0) return "Error";
 
-            decimal expectedX = n * p;
+            double expectedX = n * p;
             // Expected number of successes from sample size according to null
 
             if (!specific) successTrial = " ";
@@ -58,7 +58,7 @@ namespace HypothesisTestingDesktop
         /// <param name="r">The r.</param>
         /// <param name="a">a.</param>
         /// <returns></returns>
-        public static string CriticalComparison(int TestType, Int64 n, decimal p, Int64 r, decimal a)
+        public static string CriticalComparison(int TestType, long n, double p, long r, double a)
         {
             // Test types:
             // 1 - H0gtH1
@@ -69,33 +69,33 @@ namespace HypothesisTestingDesktop
             // lt: less than
             // ne: not equal to
 
-            decimal aDec = a / 100; // From % to x.x (percent to decimal)
+            double aDec = a / 100; // From % to x.x (percent to decimal)
 
             // < > ≥ ≤ H₀ H₁
 
             if (TestType == 1) // Test H0 > H1
             {
-                if (htMaths.BinomialProb_XltetR(n, p, r) == aDec) return "P(X ≤ " + r.ToString() + ") ≤ " + a.ToString() + "%";
+                if (Maths.BinomialProb_XltetR(n, p, r) == aDec) return "P(X ≤ " + r.ToString() + ") ≤ " + a.ToString() + "%";
 
-                if (htMaths.BinomialProb_XltetR(n, p, r) < aDec) return "P(X ≤ " + r.ToString() + ") < " + a.ToString() + "%";
+                if (Maths.BinomialProb_XltetR(n, p, r) < aDec) return "P(X ≤ " + r.ToString() + ") < " + a.ToString() + "%";
                 else return "P(X ≤ " + r.ToString() + ") > " + a.ToString() + "%";
             }
 
             if (TestType == 2) // Test H0 < H1
             {
-                if (htMaths.BinomialProb_XgtetR(n, p, r) == aDec) return "P(X ≥ " + r.ToString() + ") ≤ " + a.ToString() + "%";
+                if (Maths.BinomialProb_XgtetR(n, p, r) == aDec) return "P(X ≥ " + r.ToString() + ") ≤ " + a.ToString() + "%";
 
-                if (htMaths.BinomialProb_XgtetR(n, p, r) < aDec) return "P(X ≥ " + r.ToString() + ") < " + a.ToString() + "%";
+                if (Maths.BinomialProb_XgtetR(n, p, r) < aDec) return "P(X ≥ " + r.ToString() + ") < " + a.ToString() + "%";
                 else return "P(X ≥ " + r.ToString() + ") > " + a.ToString() + "%";
             }
 
             if (TestType == 3) // Test H0 != H1
             {
-                if (htMaths.BinomialProb_XgtetR(n, p, r) < (aDec / 2)) return "P(X ≥ " + r.ToString() + ") < " + (a / 2).ToString() + "%";
-                if (htMaths.BinomialProb_XltetR(n, p, r) < (aDec / 2)) return "P(X ≤ " + r.ToString() + ") < " + (a / 2).ToString() + "%";
+                if (Maths.BinomialProb_XgtetR(n, p, r) < (aDec / 2)) return "P(X ≥ " + r.ToString() + ") < " + (a / 2).ToString() + "%";
+                if (Maths.BinomialProb_XltetR(n, p, r) < (aDec / 2)) return "P(X ≤ " + r.ToString() + ") < " + (a / 2).ToString() + "%";
 
-                if (htMaths.BinomialProb_XgtetR(n, p, r) >= (aDec / 2)) return "P(X ≥ " + r.ToString() + ") > " + (a / 2).ToString() + "%";
-                if (htMaths.BinomialProb_XltetR(n, p, r) >= (aDec / 2)) return "P(X ≤ " + r.ToString() + ") > " + (a / 2).ToString() + "%";
+                if (Maths.BinomialProb_XgtetR(n, p, r) >= (aDec / 2)) return "P(X ≥ " + r.ToString() + ") > " + (a / 2).ToString() + "%";
+                if (Maths.BinomialProb_XltetR(n, p, r) >= (aDec / 2)) return "P(X ≤ " + r.ToString() + ") > " + (a / 2).ToString() + "%";
             }
 
             return "";
@@ -112,7 +112,7 @@ namespace HypothesisTestingDesktop
         /// <param name="AltAccepted">if set to <c>true</c> [alt accepted].</param>
         /// <param name="TestConclusion">The test conclusion.</param>
         /// <returns>The test text.</returns>
-        public static string TestText(Int64 n, decimal p, Int64 r, decimal a, int TestType, bool AltAccepted, string TestConclusion)
+        public static string TestText(long n, double p, long r, double a, int TestType, bool AltAccepted, string TestConclusion)
         {
             // H₀ H₁ ≤ ≥ ≠
 
@@ -145,7 +145,7 @@ namespace HypothesisTestingDesktop
 
             outstring += "Number of successes, r = " + r.ToString() + "\n\n";
 
-            string Comparison = htStrings.CriticalComparison(TestType, n, p, r, a);
+            string Comparison = Strings.CriticalComparison(TestType, n, p, r, a);
             if (Comparison != "") outstring += Comparison + "\n\n";
 
             string WhatHappenedToTheNull = "";
@@ -154,11 +154,10 @@ namespace HypothesisTestingDesktop
             WhatHappenedToTheNull += " null (H₀)";
             outstring += WhatHappenedToTheNull + "\n\n";
 
-            outstring += htStrings.TestConclusion(false, "", TestType, AltAccepted, n, p);
+            outstring += Strings.TestConclusion(false, "", TestType, AltAccepted, n, p);
 
             return outstring + "\n\n";
         }
-
 
         /// <summary>
         /// Gets the current date and time.
@@ -167,8 +166,8 @@ namespace HypothesisTestingDesktop
         public static string GetTimeDate()
         {
             // Return time and date as a string
-            string DateTime = System.DateTime.Now.ToString("dd-MM-yyyy HH:mm");
-            return DateTime;
+            string dateTime = DateTime.Now.ToString("dd-MM-yyyy HH:mm");
+            return dateTime;
         }
     }
 }
